@@ -1,0 +1,883 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Анкета AD Bridal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Oranienbaum&display=swap">
+<style>
+  :root {
+    --ground: #F5F1EC;
+    --surface: #FFFFFF;
+    --ink: #163D56;
+    --text: #1C2B35;
+    --muted: #64747E;
+    --line: #E4DED7;
+    --line-strong: #CFC7BE;
+    --blue: #94C3E1;
+    --blue-soft: #E6F1F8;
+    --mint-deep: #4C7649;
+    --mint-soft: #EBF1E8;
+    --peach-soft: #F9EEE3;
+    --peach-deep: #9A5B22;
+    --crit: #A8443A;
+    --r-card: 22px;
+    --r-ctl: 14px;
+    --display: "Oranienbaum", "Bodoni 72", Didot, Georgia, serif;
+    --body: "Golos Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--ground); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.5; -webkit-text-size-adjust: 100%; }
+  h1, h2, h3 { margin: 0; text-wrap: balance; }
+  p { margin: 0; }
+  button { font: inherit; }
+  input, textarea { font: inherit; color: inherit; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding-inline: 16px; padding-block: 24px 150px; display: flex; flex-direction: column; gap: 28px; }
+  @media (min-width: 600px) { .wrap { padding-inline: 24px; padding-block: 40px 150px; } }
+
+  .brand { font-family: var(--display); font-size: 15px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
+  .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+  .hint { color: var(--muted); font-size: 14px; }
+
+  /* Вход */
+  .gate { min-height: 100svh; display: grid; place-items: center; padding: 24px 16px; background: var(--ground); }
+  .gate-card { width: 100%; max-width: 420px; background: var(--surface); border-radius: var(--r-card); padding: 32px 28px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 10px 40px rgba(22,61,86,.08); }
+  .gate-card h1 { font-family: var(--display); font-weight: 400; font-size: 38px; line-height: 1.05; color: var(--ink); }
+  .gate-card .err { color: var(--crit); font-size: 14px; }
+
+  /* Шапка */
+  .hero { display: flex; flex-direction: column; gap: 12px; }
+  .hero h1 { font-family: var(--display); font-weight: 400; font-size: clamp(40px, 9vw, 56px); line-height: 1; color: var(--ink); }
+  .hero p { max-width: 56ch; color: var(--muted); }
+  .progress { margin-top: 8px; background: var(--surface); border-radius: 16px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+  .progress .bar { height: 10px; border-radius: 999px; background: var(--line); overflow: hidden; }
+  .progress .bar i { display: block; height: 100%; width: 0; background: var(--ink); border-radius: 999px; transition: width .3s; }
+  .progress .pt { font-size: 14px; color: var(--ink); font-weight: 500; font-variant-numeric: tabular-nums; }
+
+  /* Карточки */
+  .card { background: var(--surface); border-radius: var(--r-card); padding: 22px 20px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 1px 0 rgba(22,61,86,.04); }
+  .card h2 { font-family: var(--display); font-weight: 400; font-size: 28px; color: var(--ink); line-height: 1.1; }
+  .card > p { max-width: 60ch; }
+  .how { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .how li { max-width: 62ch; font-size: 15px; }
+  .how b { color: var(--ink); font-weight: 600; }
+
+  .group { display: flex; flex-direction: column; gap: 14px; }
+  .group > header { display: flex; flex-direction: column; gap: 2px; padding-top: 8px; }
+  .group > header h2 { font-family: var(--display); font-weight: 400; font-size: 30px; color: var(--ink); line-height: 1.1; }
+
+  /* Основа */
+  .found { display: flex; flex-direction: column; }
+  .frow { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; padding: 16px 0; border-top: 1px solid var(--line); }
+  .frow h3 { font-size: 17px; font-weight: 600; color: var(--ink); }
+  .frow p { font-size: 14px; color: var(--muted); max-width: 52ch; }
+  .frow .n { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-family: var(--display); font-size: 34px; line-height: 1; color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .frow .n small { font-size: 18px; }
+  .frow .fields { grid-column: 1 / -1; margin-top: 10px; }
+  .frow .need { grid-column: 1 / -1; margin: 10px 0 0; }
+  .frow.on .need { background: var(--blue-soft); }
+  .fsum { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 16px; border-top: 2px solid var(--ink); font-weight: 600; color: var(--ink); }
+  .fsum .n { font-family: var(--display); font-size: 34px; line-height: 1; font-variant-numeric: tabular-nums; }
+  .fsum .n small { font-size: 18px; }
+
+  /* Носитель */
+  .media { background: var(--surface); border-radius: var(--r-card); overflow: hidden; box-shadow: 0 1px 0 rgba(22,61,86,.04); }
+  .shot { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; background: var(--line); }
+  .shot.ph { display: grid; place-items: center; padding: 20px; text-align: center; color: var(--ink); background: var(--blue-soft); font-weight: 500; }
+  .mhead { padding: 16px 20px 0; }
+  .mhead h3 { font-size: 22px; font-weight: 600; color: var(--ink); }
+
+  .need { margin: 14px 20px 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 14px 12px 18px; border-radius: 16px; background: var(--ground); cursor: pointer; user-select: none; }
+  .need > span:first-child { font-weight: 600; font-size: 17px; color: var(--ink); }
+  .media.on .need { background: var(--blue-soft); }
+  .switch { position: relative; flex: none; width: 64px; height: 36px; }
+  .switch input { position: absolute; inset: 0; margin: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer; }
+  .switch .track { position: absolute; inset: 0; border-radius: 999px; background: var(--line-strong); transition: background .2s; }
+  .switch .track::after { content: ""; position: absolute; top: 4px; left: 4px; width: 28px; height: 28px; border-radius: 50%; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,.18); transition: transform .2s; }
+  .switch input:checked + .track { background: var(--ink); }
+  .switch input:checked + .track::after { transform: translateX(28px); }
+  .switch input:focus-visible + .track { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+  .mbody { padding: 20px 20px 22px; display: flex; flex-direction: column; gap: 22px; border-top: 1px solid var(--line); }
+  .block { display: flex; flex-direction: column; gap: 12px; }
+  .block > p { max-width: 60ch; }
+
+  .hrs { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 20px; background: var(--ground); border-top: 1px solid var(--line); }
+  .media.on .hrs { background: var(--blue-soft); }
+  .hrs .l { display: flex; flex-direction: column; gap: 2px; }
+  .hrs .n { font-family: var(--display); font-size: 42px; line-height: 1; color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .hrs .n small { font-size: 20px; }
+
+  /* Поля */
+  .fields { display: flex; flex-direction: column; gap: 14px; }
+  .f { display: flex; flex-direction: column; gap: 6px; }
+  .fl { font-size: 15px; font-weight: 500; color: var(--text); }
+  .f input[type="text"], .f textarea { width: 100%; padding: 13px 14px; border: 1.5px solid var(--line-strong); border-radius: var(--r-ctl); background: var(--surface); font-size: 16px; line-height: 1.4; }
+  .f textarea { min-height: 96px; resize: vertical; }
+  .f input:focus, .f textarea:focus { border-color: var(--ink); outline: none; }
+  .f input::placeholder, .f textarea::placeholder { color: #9AA6AE; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { min-height: 44px; padding: 10px 16px; border-radius: 999px; border: 1.5px solid var(--line-strong); background: var(--surface); color: var(--text); cursor: pointer; font-size: 15px; font-weight: 500; text-align: left; }
+  .chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+  .check { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: var(--r-ctl); border: 1.5px solid var(--line-strong); cursor: pointer; user-select: none; }
+  .check input { width: 22px; height: 22px; margin: 0; accent-color: var(--ink); flex: none; }
+  .check span { font-size: 15px; font-weight: 500; }
+  .check.urgent { background: var(--peach-soft); border-color: transparent; }
+  .check.urgent:has(input:checked) { background: var(--peach-deep); color: #fff; }
+
+  .file { position: relative; display: flex; flex-direction: column; gap: 8px; }
+  .file input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+  .file .pick { display: inline-flex; align-items: center; gap: 10px; min-height: 50px; padding: 10px 16px; border-radius: var(--r-ctl); border: 1.5px dashed var(--line-strong); background: var(--surface); cursor: pointer; font-weight: 500; color: var(--ink); }
+  .file .pick::before { content: "+"; font-size: 22px; line-height: 1; }
+  .file .names { display: flex; flex-wrap: wrap; gap: 6px; font-size: 14px; }
+  .fchip { display: inline-flex; align-items: center; gap: 4px; padding: 4px 4px 4px 12px; border-radius: 999px; background: var(--ground); color: var(--text); max-width: 100%; }
+  .fchip { overflow-wrap: anywhere; }
+  .fx { width: 30px; height: 30px; flex: none; border: 0; border-radius: 50%; background: none; color: var(--muted); font-size: 18px; line-height: 1; cursor: pointer; }
+  .fx:hover { background: var(--line); color: var(--ink); }
+  .local-note { margin: 0; padding: 10px 14px; border-radius: 14px; background: var(--peach-soft); color: var(--peach-deep); font-size: 14px; }
+  .gate-card .btn:disabled { opacity: .6; cursor: default; }
+  .file input:focus-visible + .pick { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+  .contractor { background: var(--blue-soft); border-radius: 16px; padding: 16px; }
+  .contractor .eyebrow { color: var(--ink); }
+  .contractor .f input, .contractor .f textarea, .contractor .file .pick { border-color: transparent; }
+  .contractor .f input:focus, .contractor .f textarea:focus { border-color: var(--ink); }
+  .contractor .file .pick { border: 1.5px dashed var(--blue); }
+  .btns { display: flex; flex-wrap: wrap; gap: 8px; }
+  .btns .btn { flex: 1 1 200px; }
+
+  .btn { min-height: 52px; padding: 12px 20px; border-radius: var(--r-ctl); border: 1.5px solid var(--ink); background: var(--ink); color: #fff; font-weight: 600; font-size: 16px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
+  .btn.ghost { background: var(--surface); color: var(--ink); }
+  .btn.big { width: 100%; }
+  .btn:active { transform: translateY(1px); }
+
+  /* Нижняя панель */
+  .bottom { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: rgba(255,255,255,.96); backdrop-filter: blur(8px); border-top: 1px solid var(--line); padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px)); }
+  .bottom .in { max-width: 720px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+  .bottom .meta { flex: 1 1 100%; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .bottom .st { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+  .bottom .st::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--mint-deep); }
+  .bottom .st.pending::before { background: var(--peach-deep); }
+  .bottom .st.err { color: var(--crit); }
+  .bottom .st.err::before { background: var(--crit); }
+  .bottom .tot { font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .bottom .btn { flex: 1 1 auto; min-height: 48px; font-size: 15px; }
+  @media (min-width: 600px) { .bottom .meta { flex: 1 1 auto; justify-content: flex-start; gap: 20px; } .bottom .btn { flex: 0 0 auto; } }
+
+  /* Шторка */
+  .backdrop { position: fixed; inset: 0; z-index: 30; background: rgba(22,61,86,.35); }
+  .sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 31; background: var(--surface); border-radius: 22px 22px 0 0; padding: 20px 16px calc(20px + env(safe-area-inset-bottom, 0px)); max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
+  .sheet h3 { font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .sheet .opt { display: flex; justify-content: space-between; align-items: center; gap: 12px; width: 100%; padding: 14px 16px; border-radius: var(--r-ctl); border: 1.5px solid var(--line); background: var(--surface); cursor: pointer; text-align: left; font-size: 16px; font-weight: 500; }
+  .sheet .opt:disabled { color: var(--muted); cursor: default; }
+  .sheet .opt .n { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .sheet .close { margin-top: 6px; }
+
+  .toast { position: fixed; left: 50%; bottom: calc(110px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 40; background: var(--ink); color: #fff; padding: 12px 18px; border-radius: 999px; font-size: 15px; font-weight: 500; box-shadow: 0 8px 24px rgba(22,61,86,.25); white-space: nowrap; }
+
+  .admin pre { white-space: pre-wrap; font: 14px/1.5 var(--body); background: var(--ground); border-radius: 14px; padding: 16px; margin: 0; }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<!-- ВХОД -->
+<div class="gate" id="gate">
+  <form class="gate-card" id="gate-form">
+    <div class="brand">AD Bridal</div>
+    <h1>Материалы к&nbsp;открытию</h1>
+    <p class="hint">Отметить нужные носители и ответить на вопросы по каждому.</p>
+    <div class="f">
+      <label class="fl" for="pw">Пароль</label>
+      <input id="pw" type="password" autocomplete="current-password">
+    </div>
+    <p class="err" id="pw-err" hidden>Неверный пароль</p>
+    <button class="btn big" type="submit" id="gate-btn">Войти</button>
+  </form>
+</div>
+
+<!-- АНКЕТА -->
+<main class="wrap" id="app" hidden>
+  <p class="local-note" id="local-note" hidden>Тестовый режим: база ещё не подключена, ответы сохраняются только в этом браузере.</p>
+
+  <header class="hero">
+    <div class="brand">AD Bridal · Краснодар</div>
+    <h1>Материалы к&nbsp;открытию</h1>
+    <p>Отметьте носители, которые нужны, и ответьте на вопросы под каждым. Всё сохраняется само: можно заполнять частями, возвращаться и дозаполнять. Ответы подрядчиков можно внести позже или прислать в Telegram.</p>
+    <div class="progress">
+      <div class="bar"><i id="pbar"></i></div>
+      <div class="pt" id="ptext">Пока ничего не отмечено</div>
+    </div>
+  </header>
+
+  <section class="card" id="foundation">
+    <div>
+      <h2>Сначала — основа</h2>
+      <p class="hint" style="margin-top:6px">Брендбук делался на английском. Это не замена шрифта: большинство надписей нужно переосмыслить по-русски и отрисовать заново. Эти правки делаются первыми, потом их элементы — шрифты, слова, слоганы — переносятся на все носители.</p>
+    </div>
+    <div class="found" id="found"></div>
+  </section>
+
+  <section class="card" id="general">
+    <div>
+      <h2>Общие данные</h2>
+      <p class="hint" style="margin-top:6px">Заполняются один раз и подставляются во все макеты.</p>
+    </div>
+    <div class="fields" id="general-fields"></div>
+  </section>
+
+  <section class="card admin" id="admin" hidden>
+    <h2>Сводка ответов</h2>
+    <p class="hint">Режим для Никиты. Всё, что заполнено, одним текстом.</p>
+    <pre id="admin-text"></pre>
+    <button class="btn ghost big" type="button" id="admin-copy">Скопировать сводку</button>
+    <span class="eyebrow">Файлы</span>
+    <div class="btns" id="admin-files"></div>
+  </section>
+
+  <div id="groups" style="display:flex;flex-direction:column;gap:28px"></div>
+
+  <section class="card" id="how">
+    <h2>Как считаются часы</h2>
+    <ul class="how">
+      <li><b>Бесплатно</b> — подготовка файлов к производству по требованиям подрядчика, для всех носителей. Поэтому там, где на макете только логотип и переделывать нечего (коробки, тишью, этикетка, сувениры), стоит 0 часов.</li>
+      <li><b>За что часы</b> — за дизайн. Брендбук делался на английском: надписи не переводятся дословно, а для крупных слов нет шрифтов с русскими буквами. Русский текст длиннее — композиция каждого макета пересобирается под него и под ваши реальные данные.</li>
+      <li><b>Откуда цифры</b> — базово час на носитель: перенос на русский и перевёрстка. Больше там, где больше объектов (навигация — по количеству табличек, каталог — по страницам) или это новая работа (табличка режима работы, фасад целиком).</li>
+      <li><b>Итог</b> считается внизу автоматически по отмеченным носителям. Перед каждым этапом я подтверждаю часы по нему.</li>
+    </ul>
+  </section>
+
+  <section class="card" id="later">
+    <h2>Можно вернуться позже</h2>
+    <p>Всё, что вы заполнили, сохраняется. Заходите на эту страницу в любой момент и дозаполняйте — ответы обновятся. Требования от типографий и других подрядчиков можно внести сюда, когда они ответят, или прислать в Telegram.</p>
+  </section>
+</main>
+
+<div class="bottom" id="bottom" hidden>
+  <div class="in">
+    <div class="meta"><span class="st" id="status">Сохранено</span><span class="tot" id="total"></span></div>
+    <button class="btn ghost" type="button" id="save-btn">Сохранить</button>
+    <button class="btn" type="button" id="copy-btn">Сообщение подрядчику ▾</button>
+  </div>
+</div>
+
+<div class="backdrop" id="backdrop" hidden></div>
+<div class="sheet" id="sheet" hidden role="dialog" aria-label="Сообщение подрядчику">
+  <h3>Кому отправляете?</h3>
+  <div id="sheet-opts" style="display:flex;flex-direction:column;gap:8px"></div>
+  <button class="btn ghost big close" type="button" id="sheet-close">Закрыть</button>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+(function () {
+  // База — Supabase. Пока url пустой, страница работает локально: ответы живут только в этом браузере.
+  var DB = { url: '', key: '' };
+  var REMOTE = !!(DB.url && DB.key);
+  var DEMO_PASS = 'adbridal'; // только для локального режима
+  var LS_DATA = 'adb_brief_v4', LS_PASS = 'adb_pass_v1', LS_PENDING = 'adb_pending_v1';
+
+  var GROUPS = {
+    signs: { title: 'Вывески и наружная реклама', who: 'производство наружной рекламы',
+      reqs: 'формат файла, размеры, минимальную толщину элементов и способ подсветки' },
+    print: { title: 'Типография', who: 'типография',
+      reqs: 'формат файла, цветовой профиль, вылеты и нужен ли отдельный контур для вырубки и тиснения' },
+    pack: { title: 'Производство упаковки', who: 'производство упаковки',
+      reqs: 'формат файла, развёртку или размеры изделия, способ печати и число цветов' },
+    sew: { title: 'Швейное производство', who: 'швейное производство',
+      reqs: 'формат файла для вышивки или печати, максимальный размер и число цветов' },
+    merch: { title: 'Сувениры и подарки', who: 'поставщики сувениров',
+      reqs: 'формат файла и способ нанесения для каждого изделия' }
+  };
+
+  var WORDS_ME = 'Предложи варианты', WORDS_OWN = 'Напишу свои', WORDS_EN = 'Оставить на английском';
+  // hours: число или [от, до]; F — ответы по всем пунктам основы
+  var FOUNDATION = [
+    { id: 'fonts', name: 'Кириллические шрифты', hours: function () { return 3; },
+      desc: 'Два шрифта брендбука без русских букв: каллиграфический Nautica и заглавные Rocksane. Подбираю замены с кириллицей для текстов и проверяю на носителях.' },
+    { id: 'words', name: 'Слова и слоганы на русском',
+      hours: function (F) { var w = F.words.a.who; return w === WORDS_ME ? 5 : w === WORDS_OWN ? 3 : w === WORDS_EN ? 0 : [0, 5]; },
+      desc: 'Английские фразы с бирок, пакетов, визитки и постера («Made of forever», «Where love stays», «Dresses whisper stories…») дословно по-русски не звучат. Придумываем русские формулировки с тем же настроением и рисуем их в каллиграфии бренда: у неё нет русских букв, поэтому надписи создаются заново. Можно оставить всё на английском — тогда этот этап не нужен.',
+      q: [
+        { id: 'who', type: 'choice', label: 'Русские формулировки', options: [WORDS_ME, WORDS_OWN, WORDS_EN] },
+        { id: 'own', type: 'textarea', label: 'Свои варианты', ph: 'если формулировки уже есть' }
+      ] },
+    { id: 'mockups', name: 'Брендбук на русском: все визуализации', toggle: 'Обновить брендбук целиком',
+      hours: function (F) { return F.mockups.on ? 15 : 0; },
+      desc: 'В брендбуке у каждого носителя есть визуализация: визитка в руках, пакет, вывеска на фасаде. Если брендбук нужен на русском, каждую такую картинку нужно пересобрать: подставить новый макет с русскими надписями, поправить свет и тени, обновить текст правил. Это 27 страниц. Нужно, только если брендбук будет жить как документ на русском. Для запуска салона не обязательно: файлы для производства делаются независимо.' }
+  ];
+
+  var GENERAL = [
+    { id: 'address', type: 'text', label: 'Адрес — как писать на макетах', ph: 'ул. Красная, 10, 2 этаж' },
+    { id: 'phone', type: 'text', label: 'Телефон, WhatsApp, Telegram', ph: '+7 …' },
+    { id: 'email', type: 'text', label: 'Email' },
+    { id: 'site', type: 'text', label: 'Сайт', ph: 'если домен уже есть' },
+    { id: 'social', type: 'text', label: 'Соцсети, которые указываем', ph: '@adbridal — Instagram, Telegram…' },
+    { id: 'hours', type: 'text', label: 'Режим работы', ph: 'пн–вс 10:00–20:00, по записи' },
+    { id: 'legal', type: 'textarea', label: 'Юрданные для таблички и бланка', ph: 'ИП или ООО, полное наименование, ОГРН, ИНН' },
+    { id: 'dresses', type: 'choice', label: 'Какие платья в салоне', options: ['Свой бренд', 'Другие бренды', 'И те и другие'] },
+    { id: 'rent', type: 'check', label: 'Есть прокат платьев' }
+  ];
+
+  var NOTES = { id: 'notes', type: 'textarea', label: 'Заметки', ph: 'всё, что важно знать по этому носителю' };
+  var FULL_FACADE = 'Фасад целиком: вход, витрины, подсветка';
+  var CNT = ['1–3', '4–6', 'Больше 6'];
+  function byCount(v) { return v === CNT[0] ? 1 : v === CNT[1] ? 2 : v === CNT[2] ? 3 : [1, 3]; }
+  var TR = ['Оставить', 'Заменить на одну из переведённых', 'Заменить на свою', 'Убрать'];
+  var TR2 = ['Оставить', 'Заменить на переведённые', 'Заменить на свои'];
+
+  // hours: число или функция от ответов; feature — что в макете нетипичного, уходит в сообщение подрядчику
+  var MEDIA = [
+    // ---- вывески и наружная реклама
+    { id: 'sign', g: 'signs', name: 'Вывеска на фасад', img: 'img/sign.jpg', file: 'AD-Bridal-vyveska.jpg',
+      hours: function (a) { return a.scope === FULL_FACADE ? 4 : 1; },
+      change: 'Переносим логотип на реальный фасад и добавляем «свадебный салон». Слоган «Made of forever» на фасаде оставить нельзя: по закону допустим только товарный знак и русский текст.',
+      feature: 'объёмная монограмма и надпись «свадебный салон», возможна подсветка',
+      q: [
+        { id: 'scope', type: 'choice', label: 'Что делаем', options: ['Только вывеску', FULL_FACADE] },
+        { id: 'type', type: 'choice', label: 'Тип конструкции', options: ['Объёмные буквы', 'Световой короб', 'Неон', 'Ещё не решили'] },
+        { id: 'size', type: 'text', label: 'Размер места под вывеску', ph: 'например, 4 × 0,8 м — если знаете' },
+        { id: 'slogan', type: 'choice', label: 'Слоган под названием', options: ['Не нужен', 'Одна из переведённых'] },
+        { id: 'photo', type: 'file', label: 'Фото фасада', accept: 'image/*', multiple: true },
+        { id: 'tg', type: 'check', label: 'Пришлю фото в Telegram' }
+      ] },
+    { id: 'plaque', g: 'signs', name: 'Табличка «Режим работы»', img: null, file: '', hours: 2,
+      change: 'Новый носитель, в брендбуке его нет. Делаю в стиле настольных табличек: монограмма, часы работы и юрданные из общих данных.',
+      feature: 'табличка с монограммой, надпись гравировкой или печатью',
+      q: [
+        { id: 'where', type: 'choice', label: 'Где будет', options: ['На двери', 'На стене у входа', 'На стекле витрины'] },
+        { id: 'size', type: 'text', label: 'Размер, если знаете', ph: 'например, 30 × 40 см' }
+      ] },
+    { id: 'nav', g: 'signs', name: 'Навигация в салоне', img: 'img/nav.jpg', file: 'AD-Bridal-navigacia.jpg',
+      hours: function (a) { return byCount(a.count); },
+      change: 'Переводим на русский: «Примерочные», «Гардероб» и остальные указатели по вашему списку.',
+      feature: 'деревянные таблички с soft-touch покрытием скруглённой формы, надпись и стрелка',
+      q: [
+        { id: 'zones', type: 'textarea', label: 'Какие указатели нужны', ph: 'например: примерочные, гардероб, туалет, лестница, ресепшн' },
+        { id: 'count', type: 'choice', label: 'Сколько табличек', options: CNT }
+      ] },
+    { id: 'table', g: 'signs', name: 'Настольные таблички', img: 'img/table.jpg', file: 'AD-Bridal-tablichki.jpg',
+      hours: function (a) { return byCount(a.count); },
+      change: 'Переводим на русский и ставим ваши данные. В брендбуке на табличке ошибка в часах — исправим.',
+      feature: 'настольная табличка из дерева на подставке, монограмма и текст',
+      q: [
+        { id: 'which', type: 'textarea', label: 'Какие таблички', ph: 'например: ресепшн, режим работы, Wi-Fi, QR на отзывы' },
+        { id: 'count', type: 'choice', label: 'Сколько табличек', options: CNT }
+      ] },
+    { id: 'poster', g: 'signs', name: 'Постер и наружная реклама', img: 'img/poster.jpg', file: 'AD-Bridal-poster.jpg', hours: 1,
+      change: 'Фото и надпись под реальное место и размер. На наружной рекламе надпись по закону должна быть на русском; оставить английскую можно только на постере внутри салона.',
+      feature: 'широкоформатная печать фото с надписью',
+      q: [
+        { id: 'where', type: 'choice', label: 'Где будет', options: ['Билборд или щит', 'Баннер на фасаде', 'Постер в салоне', 'Реклама в ТЦ'] },
+        { id: 'size', type: 'text', label: 'Размер, если знаете', ph: 'например, 3 × 6 м' },
+        { id: 'text', type: 'choice', label: 'Надпись «Silence before the vow»', options: TR },
+        { id: 'textOwn', type: 'textarea', label: 'Своя надпись', ph: 'если выбрали свой вариант' }
+      ] },
+
+    // ---- типография
+    { id: 'card', g: 'print', name: 'Визитка', img: 'img/card.jpg', file: 'AD-Bridal-vizitka.jpg', hours: 1,
+      change: 'Переводим на русский, ставим реальные контакты из общих данных. Волнистый край и белую рамку сохраняем.',
+      feature: 'волнистый край, белая рамка по контуру и монограмма тиснением',
+      q: [
+        { id: 'kind', type: 'choice', label: 'Какие визитки', options: ['Одна общая для салона', 'Персональные для сотрудников', 'И те и другие'] },
+        { id: 'contacts', type: 'textarea', label: 'Что указать', ph: 'телефон, WhatsApp, Telegram, адрес, сайт, соцсети — или «как в общих данных»' },
+        { id: 'text', type: 'choice', label: 'Надпись «Dresses whisper stories long before they are worn»', options: TR },
+        { id: 'textOwn', type: 'textarea', label: 'Своя надпись', ph: 'если выбрали свой вариант' }
+      ] },
+    { id: 'tag', g: 'print', name: 'Ценники и бирки на вешалки', img: 'img/tag.jpg', file: 'AD-Bridal-cenniki.jpg', hours: 1,
+      change: 'На ценник добавляем поля модели и цены: сейчас там только логотип и адрес. На бирке для вешалки — русский слоган. Волнистый край сохраняем.',
+      feature: 'волнистый край, белая рамка, отверстие под нить; у бирки на вешалку — фигурная форма',
+      q: [
+        { id: 'content', type: 'textarea', label: 'Что должно быть на ценнике', ph: 'Обычно пишут название модели, размер и цену. Иногда — бренд, артикул, состав ткани, цену проката. Напишите, что нужно вам, и как будете ставить цену: от руки или печатать.' },
+        { id: 'hanger', type: 'choice', label: 'Слоган на бирке для вешалки', options: TR },
+        { id: 'hangerOwn', type: 'textarea', label: 'Своя надпись', ph: 'если выбрали свой вариант' }
+      ] },
+    { id: 'badges', g: 'print', name: 'Бирки со слоганами', img: 'img/badges.jpg', file: 'AD-Bridal-birki.jpg', hours: 1,
+      change: 'Слоганы на бирках — на русском, из переведённых в основе. Форма и три цвета сохраняются.',
+      feature: 'фигурная вырубка по волнистому контуру, отверстие под ленту, печать по цветной бумаге',
+      q: [
+        { id: 'where', type: 'textarea', label: 'Где будут бирки', ph: 'на пакетах, коробках, пыльниках, подарках…' },
+        { id: 'count', type: 'choice', label: 'Сколько разных слоганов', options: ['Один', 'Два', 'Три'] }
+      ] },
+    { id: 'letterhead', g: 'print', name: 'Фирменный бланк', img: 'img/letterhead.jpg', file: 'AD-Bridal-blank.jpg', hours: 0,
+      change: 'Ставим реквизиты и адрес из общих данных, исправляем опечатки. Бесплатно.',
+      feature: 'логотип и адрес, возможно тиснение',
+      q: [
+        { id: 'use', type: 'textarea', label: 'Для чего бланк', ph: 'договоры, счета, письма' },
+        { id: 'print', type: 'choice', label: 'Как печатаете', options: ['В типографии', 'Сами на принтере — нужен шаблон в Word'] }
+      ] },
+    { id: 'brochure', g: 'print', name: 'Брошюра', img: 'img/brochure.jpg', file: 'AD-Bridal-broshura.jpg', hours: 2,
+      change: 'Тексты про салон на русском. В брендбуке текст-заглушка с ошибками — пишем заново.',
+      feature: 'евробуклет в два сложения, печать по голубой бумаге или заливкой',
+      q: [
+        { id: 'about', type: 'textarea', label: 'Текст про салон', ph: 'что за салон, услуги (примерка по записи, подгонка), что ещё важно сказать' },
+        { id: 'text', type: 'choice', label: 'Надписи в брошюре', options: TR2 },
+        { id: 'textOwn', type: 'textarea', label: 'Свои надписи', ph: 'если выбрали свой вариант' }
+      ] },
+    { id: 'catalogue', g: 'print', name: 'Каталог', img: 'img/catalogue.jpg', file: 'AD-Bridal-katalog.jpg',
+      hours: function (a) { var p = a.pages; return p === 'До 8' ? 2 : p === '8–16' ? 4 : p === 'Больше 16' ? 6 : [2, 6]; },
+      change: 'Собираем на ваших фото и описаниях. Структуру разворотов сохраняем.',
+      feature: 'многостраничный каталог, скрепление на скобу или клей',
+      q: [
+        { id: 'content', type: 'textarea', label: 'Что в каталоге', ph: 'какие модели, есть ли фото и описания' },
+        { id: 'pages', type: 'choice', label: 'Сколько страниц', options: ['До 8', '8–16', 'Больше 16'] },
+        { id: 'format', type: 'choice', label: 'Формат', options: ['Печатный', 'PDF для мессенджеров', 'И то и другое'] }
+      ] },
+    { id: 'care', g: 'print', name: 'Карточка по уходу', img: 'img/care.jpg', file: 'AD-Bridal-uhod.jpg', hours: 1,
+      change: 'Текст по уходу на русском. Нужна, если платья свои: для чужих брендов уход указывает производитель.',
+      feature: 'фигурная вырубка, отверстие под ленту, монограмма тиснением',
+      q: [
+        { id: 'text', type: 'textarea', label: 'Рекомендации по уходу', ph: 'химчистка, хранение, глажка — как советуете вы' },
+        { id: 'kind', type: 'choice', label: 'Сколько вариантов', options: ['Одна общая', 'Под разные ткани'] }
+      ] },
+    { id: 'postcards', g: 'print', name: 'Открытки', img: 'img/postcards.jpg', file: 'AD-Bridal-otkrytki.jpg', hours: 1,
+      change: 'Открытки под ваше назначение и русский текст.',
+      feature: 'открытка с фигурной рамкой под фото',
+      q: [
+        { id: 'purpose', type: 'textarea', label: 'Для чего открытки', ph: 'благодарность после покупки, поздравление, вложение в заказ' },
+        { id: 'text', type: 'textarea', label: 'Текст', ph: 'если уже есть' }
+      ] },
+    { id: 'envelope', g: 'print', name: 'Конверт', img: 'img/envelope.jpg', file: 'AD-Bridal-konvert.jpg', hours: 0,
+      change: 'Дизайн готов: монограмма тиснением на клапане, надписей нет. Переделывать нечего — готовлю файл под требования типографии.',
+      feature: 'конверт с фигурным клапаном и тиснением монограммы',
+      q: [] },
+    { id: 'stickers', g: 'print', name: 'Стикеры', img: 'img/stickers.jpg', file: 'AD-Bridal-stikery.jpg', hours: 1,
+      change: 'Надписи на русском, набор сохраняем: слоганы, монограмма, лебедь, сердца.',
+      feature: 'объёмные наклейки фигурной резки с эпоксидной заливкой',
+      q: [
+        { id: 'purpose', type: 'textarea', label: 'Для чего стикеры', ph: 'запечатывать упаковку, подарок невесте, для соцсетей' }
+      ] },
+
+    // ---- упаковка
+    { id: 'bags', g: 'pack', name: 'Пакеты', img: 'img/bags.jpg', file: 'AD-Bridal-pakety.jpg', hours: 1,
+      change: 'Заменяем надпись «Made of forever» на русскую, размеры под ваш ассортимент.',
+      feature: 'пакет из цветной бумаги с волнистым верхним краем, печать белым, ленты-ручки',
+      q: [
+        { id: 'what', type: 'textarea', label: 'Под что пакеты', ph: 'аксессуары, фата, обувь' },
+        { id: 'size', type: 'text', label: 'Размеры, если знаете' },
+        { id: 'text', type: 'choice', label: 'Надпись «Made of forever»', options: TR }
+      ] },
+    { id: 'boxes', g: 'pack', name: 'Коробки', img: 'img/boxes.jpg', file: 'AD-Bridal-korobki.jpg', hours: 0,
+      change: 'Надписей нет, только монограмма тиснением. Переделывать нечего: готовлю файлы под размеры производителя.',
+      feature: 'коробка с тиснением монограммы на крышке и лентой',
+      q: [
+        { id: 'what', type: 'textarea', label: 'Что в коробках', ph: 'аксессуары, обувь, подарок' },
+        { id: 'size', type: 'text', label: 'Размеры, если знаете' }
+      ] },
+    { id: 'wrap', g: 'pack', name: 'Упаковочная бумага, тишью, ленты', img: 'img/wrap.jpg', file: 'AD-Bridal-upakovka.jpg', hours: 0,
+      change: 'Паттерны готовы и переданы. Переделывать нечего: подгоняю файлы под размеры производителя.',
+      feature: 'печать паттерна на тишью и упаковочной бумаге, печать на атласной ленте',
+      q: [
+        { id: 'items', type: 'multi', label: 'Что нужно', options: ['Тишью с паттерном', 'Упаковочная бумага', 'Ленты с печатью', 'Кружевная лента'] }
+      ] },
+
+    // ---- швейное
+    { id: 'bag', g: 'sew', name: 'Чехол для платья', img: 'img/bag.jpg', file: 'AD-Bridal-chehol.jpg', hours: 1,
+      change: 'Дорабатываем вашу концепцию чехла и готовим файлы для производства.',
+      feature: 'вышитая монограмма и белый кант — уточните, что подходит: вышивка или печать',
+      q: [
+        { id: 'concept', type: 'textarea', label: 'Что уже есть по чехлу', ph: 'опишите, что придумали и что хотите изменить' },
+        { id: 'files', type: 'file', label: 'Эскиз или фото', accept: 'image/*,.pdf', multiple: true },
+        { id: 'tg', type: 'check', label: 'Пришлю в Telegram' }
+      ] },
+    { id: 'dust', g: 'sew', name: 'Пыльники', img: 'img/dust.jpg', file: 'AD-Bridal-pylniki.jpg', hours: 0,
+      change: 'Монограмма и полосатый паттерн без изменений. Переделывать нечего: готовлю файлы под размеры производства.',
+      feature: 'вышитая монограмма; полосатая ткань с атласными завязками',
+      q: [
+        { id: 'items', type: 'multi', label: 'Для чего', options: ['Платье', 'Обувь', 'Аксессуары'] }
+      ] },
+    { id: 'label', g: 'sew', name: 'Вшивная этикетка', img: 'img/label.jpg', file: 'AD-Bridal-etiketka.jpg', hours: 0,
+      change: 'Монограмма без изменений: готовлю файл под требования производства. Нужна только для платьев своего бренда.',
+      feature: 'тканая или сатиновая этикетка с монограммой и кружевной отделкой',
+      q: [] },
+
+    // ---- сувениры
+    { id: 'merch', g: 'merch', name: 'Сувениры с монограммой', img: 'img/merch.jpg', file: 'AD-Bridal-suveniry.jpg',
+      hours: 0,
+      change: 'Монограмма на каждом изделии, надписей нет. Переделывать нечего: готовлю файлы под нанесение для тех изделий, что отметите.',
+      feature: 'нанесение монограммы на каждое изделие: вышивка, гравировка или глазурь',
+      q: [
+        { id: 'items', type: 'multi', label: 'Что планируете', options: ['Маска для сна', 'Подвязка', 'Блокнот', 'Платок', 'Керамическая подвеска', 'Кулон', 'Тарелочка'] }
+      ] }
+  ];
+
+  // ---------- состояние ----------
+  var S;
+  function blank() {
+    S = { f: {}, g: {}, m: {} };
+    FOUNDATION.forEach(function (f) { S.f[f.id] = { a: {}, on: false }; });
+    MEDIA.forEach(function (m) { S.m[m.id] = { on: false, urgent: false, a: {}, req: '', reqFiles: [] }; });
+  }
+  function mergeIn(d) {
+    if (!d || typeof d !== 'object') return;
+    if (d.g) S.g = Object.assign(S.g, d.g);
+    Object.keys(S.f).forEach(function (k) { if (d.f && d.f[k]) { S.f[k] = Object.assign(S.f[k], d.f[k]); S.f[k].a = Object.assign({}, d.f[k].a); } });
+    Object.keys(S.m).forEach(function (k) { if (d.m && d.m[k]) { S.m[k] = Object.assign(S.m[k], d.m[k]); S.m[k].a = Object.assign({}, d.m[k].a); } });
+  }
+  function readLS(key) { try { var r = localStorage.getItem(key); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
+  function writeLS(key, v) { try { localStorage.setItem(key, JSON.stringify(v)); } catch (e) {} }
+  blank(); mergeIn(readLS(LS_DATA));
+
+  // pending — изменения, ещё не отправленные в базу: путь → значение
+  var pending = readLS(LS_PENDING) || {};
+  function getP(path) { return path.split('.').reduce(function (o, k) { return o == null ? undefined : o[k]; }, S); }
+  function setIn(path, v) { var ks = path.split('.'), o = S; for (var i = 0; i < ks.length - 1; i++) { if (o[ks[i]] == null) o[ks[i]] = {}; o = o[ks[i]]; } o[ks[ks.length - 1]] = v; }
+  function setP(path, v) { setIn(path, v); pending[path] = v; }
+  var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); };
+
+  // часы везде как диапазон [от, до]; если от = до — одно число
+  function R(h) { return Array.isArray(h) ? h : [h, h]; }
+  function addR(a, b) { return [a[0] + b[0], a[1] + b[1]]; }
+  function fmtN(n) { return String(Math.round(n * 10) / 10).replace('.', ','); }
+  function fmtR(r) { return r[0] === r[1] ? fmtN(r[0]) : fmtN(r[0]) + '–' + fmtN(r[1]); }
+  function hrs(h) { return fmtR(R(h)) + ' <small>ч</small>'; }
+  function hoursOf(m) { return R(typeof m.hours === 'function' ? m.hours(S.m[m.id].a) : m.hours); }
+  function foundOf(f) { return R(f.hours(S.f)); }
+  function foundHours() { return FOUNDATION.reduce(function (s, f) { return addR(s, foundOf(f)); }, [0, 0]); }
+  function totalHours() { return MEDIA.reduce(function (s, m) { return S.m[m.id].on ? addR(s, hoursOf(m)) : s; }, foundHours()); }
+
+  // ---------- поля ----------
+  function fieldHTML(scope, f) {
+    var k = scope + '.' + f.id, v = getP(k), id = 'f-' + k.replace(/\./g, '-');
+    if (f.type === 'text') return '<div class="f"><label class="fl" for="' + id + '">' + esc(f.label) + '</label><input type="text" id="' + id + '" data-k="' + k + '" value="' + esc(v) + '" placeholder="' + esc(f.ph) + '"></div>';
+    if (f.type === 'textarea') return '<div class="f"><label class="fl" for="' + id + '">' + esc(f.label) + '</label><textarea id="' + id + '" data-k="' + k + '" placeholder="' + esc(f.ph) + '">' + esc(v) + '</textarea></div>';
+    if (f.type === 'check') return '<label class="check"><input type="checkbox" id="' + id + '" data-k="' + k + '"' + (v ? ' checked' : '') + '><span>' + esc(f.label) + '</span></label>';
+    if (f.type === 'file') return '<div class="f"><span class="fl">' + esc(f.label) + '</span><div class="file"><input type="file" id="' + id + '" data-k="' + k + '" accept="' + esc(f.accept) + '"' + (f.multiple ? ' multiple' : '') + '><label class="pick" for="' + id + '">' + esc(f.btn || 'Загрузить') + '</label><div class="names" id="names-' + id + '">' + filesHTML(k, v || []) + '</div></div></div>';
+    var multi = f.type === 'multi', sel = multi ? (v || []) : v;
+    return '<div class="f"><span class="fl">' + esc(f.label) + '</span><div class="chips" data-k="' + k + '" data-type="' + f.type + '">' +
+      f.options.map(function (o) { var on = multi ? sel.indexOf(o) >= 0 : sel === o; return '<button type="button" class="chip" data-v="' + esc(o) + '" aria-pressed="' + on + '">' + esc(o) + '</button>'; }).join('') + '</div></div>';
+  }
+
+  function fname(x) { return typeof x === 'string' ? x : x.name; }
+  function filesHTML(k, files) {
+    if (!files.length) return '<span class="hint">Файл не выбран</span>';
+    return files.map(function (x, i) { return '<span class="fchip">' + esc(fname(x)) + '<button type="button" class="fx" data-fk="' + k + '" data-fi="' + i + '" aria-label="Убрать ' + esc(fname(x)) + '">×</button></span>'; }).join('');
+  }
+  function refreshFiles(k) { document.getElementById('names-f-' + k.replace(/\./g, '-')).innerHTML = filesHTML(k, getP(k) || []); }
+
+  function foundHTML(f) {
+    var st = S.f[f.id];
+    return '<div class="frow' + (st.on ? ' on' : '') + '" id="fr-' + f.id + '"><h3>' + esc(f.name) + '</h3><span class="n" id="fh-' + f.id + '">' + hrs(foundOf(f)) + '</span><p>' + esc(f.desc) + '</p>' +
+      (f.toggle ? '<label class="need"><span>' + esc(f.toggle) + '</span><span class="switch"><input type="checkbox" data-k="f.' + f.id + '.on"' + (st.on ? ' checked' : '') + '><span class="track"></span></span></label>' : '') +
+      (f.q ? '<div class="fields">' + f.q.map(function (q) { return fieldHTML('f.' + f.id + '.a', q); }).join('') + '</div>' : '') + '</div>';
+  }
+
+  function cardHTML(m) {
+    var st = S.m[m.id], grp = GROUPS[m.g];
+    return '<article class="media' + (st.on ? ' on' : '') + '" id="m-' + m.id + '">' +
+      (m.img ? '<img class="shot" src="' + m.img + '" alt="' + esc(m.name) + ' в брендбуке" loading="lazy">' : '<div class="shot ph">Новый носитель — в брендбуке его нет.<br>Сделаю в стиле настольных табличек.</div>') +
+      '<div class="mhead"><h3>' + esc(m.name) + '</h3></div>' +
+      '<label class="need"><span>Нужно</span><span class="switch"><input type="checkbox" data-k="m.' + m.id + '.on"' + (st.on ? ' checked' : '') + '><span class="track"></span></span></label>' +
+      '<div class="mbody" id="body-' + m.id + '"' + (st.on ? '' : ' hidden') + '>' +
+        '<div class="block"><span class="eyebrow">Что меняем</span><p>' + esc(m.change) + '</p></div>' +
+        '<label class="check urgent"><input type="checkbox" data-k="m.' + m.id + '.urgent"' + (st.urgent ? ' checked' : '') + '><span>Нужно в первую очередь</span></label>' +
+        '<div class="block"><span class="eyebrow">Что нужно от вас</span><div class="fields">' + m.q.concat([NOTES]).map(function (f) { return fieldHTML('m.' + m.id + '.a', f); }).join('') + '</div></div>' +
+        '<div class="block contractor"><span class="eyebrow">Подрядчик · ' + esc(grp.who) + '</span>' +
+          '<p>Найдите, кто это изготовит, и отправьте им сообщение ниже' + (m.img ? ' вместе с картинкой этого носителя' : '') + '. Их ответ — требования к файлам — вставьте сюда или прикрепите файлом. По этим требованиям я подготовлю макет к производству.</p>' +
+          '<div class="btns"><button type="button" class="btn" data-copy-media="' + m.id + '">Скопировать сообщение</button>' + (m.img ? '<a class="btn ghost" href="' + m.img + '" download="' + esc(m.file) + '">Сохранить картинку</a>' : '') + '</div>' +
+          '<div class="fields">' +
+            fieldHTML('m.' + m.id, { id: 'req', type: 'textarea', label: 'Ответ подрядчика: требования к файлам', ph: 'вставьте текст их ответа' }) +
+            fieldHTML('m.' + m.id, { id: 'reqFiles', type: 'file', label: 'Или прикрепите их файл', btn: 'Прикрепить PDF или картинку', accept: '.pdf,image/*', multiple: true }) +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="hrs"><div class="l"><span class="eyebrow">Время на дизайн</span><span class="hint">' + (hoursOf(m)[1] === 0 ? 'Переделывать нечего: только подготовка к производству, бесплатно' : 'Подготовка файлов к производству — бесплатно') + '</span></div><span class="n" id="hrs-' + m.id + '">' + hrs(hoursOf(m)) + '</span></div>' +
+    '</article>';
+  }
+
+  function render() {
+    document.getElementById('found').innerHTML = FOUNDATION.map(foundHTML).join('') +
+      '<div class="fsum"><span>Основа, всего</span><span class="n" id="fsum-n">' + hrs(foundHours()) + '</span></div>';
+    document.getElementById('general-fields').innerHTML = GENERAL.map(function (f) { return fieldHTML('g', f); }).join('');
+    document.getElementById('groups').innerHTML = Object.keys(GROUPS).map(function (g) {
+      var items = MEDIA.filter(function (m) { return m.g === g; });
+      if (!items.length) return '';
+      return '<section class="group"><header><span class="eyebrow">Подрядчик</span><h2>' + esc(GROUPS[g].title) + '</h2></header>' + items.map(cardHTML).join('') + '</section>';
+    }).join('');
+    updateProgress();
+  }
+
+  // ---------- прогресс и часы ----------
+  function filled(id) { var st = S.m[id]; return st.req || (st.reqFiles || []).length || Object.keys(st.a).some(function (k) { var v = st.a[k]; return Array.isArray(v) ? v.length : v; }); }
+  function updateProgress() {
+    var on = MEDIA.filter(function (m) { return S.m[m.id].on; }), done = on.filter(function (m) { return filled(m.id); });
+    document.getElementById('pbar').style.width = (on.length ? done.length / on.length * 100 : 0) + '%';
+    document.getElementById('ptext').textContent = on.length ? 'Отмечено ' + on.length + ' · заполнено ' + done.length + ' из ' + on.length : 'Пока ничего не отмечено';
+    MEDIA.forEach(function (m) { document.getElementById('hrs-' + m.id).innerHTML = hrs(hoursOf(m)); });
+    FOUNDATION.forEach(function (f) { document.getElementById('fh-' + f.id).innerHTML = hrs(foundOf(f)); });
+    document.getElementById('fsum-n').innerHTML = hrs(foundHours());
+    document.getElementById('total').textContent = 'Итого ≈ ' + fmtR(totalHours()) + ' ч';
+  }
+
+  // ---------- сохранение ----------
+  var timer = null, status = document.getElementById('status'), PASSWORD = '', inflight = false;
+  function fmtTime() { var d = new Date(); return (d.getHours() < 10 ? '0' : '') + d.getHours() + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes(); }
+  function setStatus(kind, text) { status.textContent = text; status.className = 'st' + (kind ? ' ' + kind : ''); }
+  function persist() { writeLS(LS_DATA, S); writeLS(LS_PENDING, pending); }
+
+  function rpc(fn, args, keepalive) {
+    var h = { 'Content-Type': 'application/json', apikey: DB.key };
+    if (/^eyJ/.test(DB.key)) h.Authorization = 'Bearer ' + DB.key;
+    return fetch(DB.url + '/rest/v1/rpc/' + fn, { method: 'POST', headers: h, body: JSON.stringify(args), keepalive: !!keepalive })
+      .then(function (r) {
+        return r.text().then(function (t) {
+          var j = null; try { j = t ? JSON.parse(t) : null; } catch (e) {}
+          if (r.ok) return j;
+          var msg = (j && (j.message || j.hint)) || t;
+          throw { status: r.status, bad: /bad_password/.test(msg), msg: msg };
+        });
+      }, function () { throw { net: true }; });
+  }
+
+  // отправляем только изменённые поля: двое могут заполнять разные карточки одновременно
+  function saveNow(keepalive) {
+    clearTimeout(timer); timer = null; persist();
+    if (!REMOTE) { pending = {}; persist(); setStatus('', 'Сохранено ' + fmtTime()); return Promise.resolve(); }
+    var keys = Object.keys(pending);
+    if (!keys.length) { setStatus('', 'Сохранено ' + fmtTime()); return Promise.resolve(); }
+    if (inflight) { timer = setTimeout(saveNow, 1500); return Promise.resolve(); }
+    var batch = pending; pending = {}; persist(); inflight = true;
+    setStatus('pending', 'Сохраняю…');
+    var patch = keys.map(function (k) { return { p: k.split('.'), v: batch[k] }; });
+    return rpc('brief_save', { p_pass: PASSWORD, p_patch: patch }, keepalive).then(function () {
+      inflight = false;
+      if (Object.keys(pending).length) { timer = setTimeout(saveNow, 1500); setStatus('pending', 'Сохраняю…'); }
+      else setStatus('', 'Сохранено ' + fmtTime());
+    }, function (err) {
+      inflight = false;
+      Object.keys(batch).forEach(function (k) { if (!(k in pending)) pending[k] = batch[k]; }); persist();
+      if (err.bad) { setStatus('err', 'Пароль сменился — обновите страницу'); return; }
+      setStatus('err', 'Нет связи — сохраню, когда появится интернет'); timer = setTimeout(saveNow, 15000);
+    });
+  }
+  function touched() { persist(); setStatus('pending', 'Есть несохранённые изменения'); clearTimeout(timer); timer = setTimeout(saveNow, 10000); updateProgress(); }
+  document.getElementById('save-btn').addEventListener('click', function () {
+    saveNow().then(function () { if (!status.classList.contains('err')) toast('Сохранено'); });
+  });
+  window.addEventListener('pagehide', function () { if (Object.keys(pending).length) saveNow(true); });
+  document.addEventListener('visibilitychange', function () { if (document.hidden && Object.keys(pending).length) saveNow(true); });
+
+  // ---------- файлы ----------
+  var MAX_FILE = 8 * 1024 * 1024;
+  function toB64(blob) { return new Promise(function (ok, no) { var r = new FileReader(); r.onload = function () { ok(String(r.result).split(',')[1]); }; r.onerror = no; r.readAsDataURL(blob); }); }
+  function shrink(file) {
+    // фото с телефона — уменьшаем до 2000 px по длинной стороне
+    if (!/^image\/(jpeg|png|webp|heic|heif)$/i.test(file.type)) return Promise.resolve({ blob: file, name: file.name, type: file.type || 'application/octet-stream' });
+    return new Promise(function (ok) {
+      var url = URL.createObjectURL(file), img = new Image();
+      img.onload = function () {
+        var sc = Math.min(1, 2000 / Math.max(img.naturalWidth, img.naturalHeight)), c = document.createElement('canvas');
+        c.width = Math.round(img.naturalWidth * sc); c.height = Math.round(img.naturalHeight * sc);
+        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(url);
+        c.toBlob(function (b) { ok(b ? { blob: b, name: file.name.replace(/\.\w+$/, '') + '.jpg', type: 'image/jpeg' } : { blob: file, name: file.name, type: file.type }); }, 'image/jpeg', 0.85);
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); ok({ blob: file, name: file.name, type: file.type || 'application/octet-stream' }); };
+      img.src = url;
+    });
+  }
+  function putFile(file) {
+    if (!REMOTE) return Promise.resolve(file.name);
+    return shrink(file).then(function (p) {
+      if (p.blob.size > MAX_FILE) throw { msg: 'Файл «' + file.name + '» больше 8 МБ — пришлите его в Telegram' };
+      return toB64(p.blob).then(function (b64) {
+        return rpc('brief_file_put', { p_pass: PASSWORD, p_name: p.name, p_mime: p.type, p_b64: b64 }).then(function (id) { return { id: id, name: p.name }; });
+      });
+    });
+  }
+  function uploadFiles(k, list) {
+    setStatus('pending', 'Загружаю ' + (list.length > 1 ? 'файлы' : 'файл') + '…');
+    var chain = Promise.resolve();
+    list.forEach(function (file) {
+      chain = chain.then(function () { return putFile(file); }).then(function (ref) {
+        var arr = (getP(k) || []).slice(); arr.push(ref); setP(k, arr); refreshFiles(k); touched();
+      }, function (err) { toast(err && err.msg && !err.status ? err.msg : 'Не удалось загрузить «' + file.name + '» — пришлите в Telegram'); });
+    });
+    chain.then(function () { saveNow(); });
+  }
+
+  // ---------- события ----------
+  var app = document.getElementById('app');
+  app.addEventListener('input', function (e) {
+    var t = e.target; if (!t.dataset.k || t.type === 'checkbox' || t.type === 'file') return;
+    setP(t.dataset.k, t.value); touched();
+  });
+  app.addEventListener('change', function (e) {
+    var t = e.target; if (!t.dataset.k) return;
+    if (t.type === 'file') {
+      var list = Array.prototype.slice.call(t.files); t.value = '';
+      if (list.length) uploadFiles(t.dataset.k, list);
+      return;
+    }
+    if (t.type !== 'checkbox') return;
+    setP(t.dataset.k, t.checked);
+    var fm = /^f\.(\w+)\.on$/.exec(t.dataset.k);
+    if (fm) document.getElementById('fr-' + fm[1]).classList.toggle('on', t.checked);
+    var mm = /^m\.(\w+)\.on$/.exec(t.dataset.k);
+    if (mm) {
+      var card = document.getElementById('m-' + mm[1]); card.classList.toggle('on', t.checked);
+      document.getElementById('body-' + mm[1]).hidden = !t.checked;
+      if (t.checked) setTimeout(function () { card.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 50);
+    }
+    touched();
+  });
+  app.addEventListener('click', function (e) {
+    var chip = e.target.closest('.chip');
+    if (chip) {
+      var box = chip.parentNode, k = box.dataset.k, v = chip.dataset.v;
+      if (box.dataset.type === 'multi') {
+        var arr = (getP(k) || []).slice(), i = arr.indexOf(v); i >= 0 ? arr.splice(i, 1) : arr.push(v);
+        setP(k, arr); chip.setAttribute('aria-pressed', String(i < 0));
+      } else {
+        var same = getP(k) === v; setP(k, same ? '' : v);
+        box.querySelectorAll('.chip').forEach(function (c) { c.setAttribute('aria-pressed', String(!same && c === chip)); });
+      }
+      touched(); return;
+    }
+    var fx = e.target.closest('.fx');
+    if (fx) { var fk = fx.dataset.fk, arr2 = (getP(fk) || []).slice(); arr2.splice(+fx.dataset.fi, 1); setP(fk, arr2); refreshFiles(fk); touched(); return; }
+    var cm = e.target.closest('[data-copy-media]');
+    if (cm) copyText(requestText(MEDIA.filter(function (m) { return m.id === cm.dataset.copyMedia; })));
+  });
+
+  // ---------- сообщение подрядчику ----------
+  function requestText(items) {
+    var g = GROUPS[items[0].g], one = items.length === 1;
+    var what = one ? items[0].name.toLowerCase() : '\n' + items.map(function (m) { return '— ' + m.name.toLowerCase(); }).join('\n');
+    var feats = one ? items[0].feature : '\n' + items.map(function (m) { return '— ' + m.name + ': ' + m.feature; }).join('\n');
+    return 'Здравствуйте! Мы свадебный салон AD Bridal, Краснодар. Хотим заказать у вас: ' + what + '.\n\n' +
+      'Прикладываю картинк' + (one ? 'у' : 'и') + ', как это должно выглядеть. Сможете ли вы сделать именно так? Обратите внимание: ' + feats + (one ? '.' : '') + ' Если что-то из этого невозможно, подскажите, как сделать похоже.\n\n' +
+      'И пришлите, пожалуйста, требования к макетам для нашего дизайнера: ' + g.reqs + ' — или ваш стандартный документ с требованиями.\n\nСпасибо!';
+  }
+  var sheet = document.getElementById('sheet'), backdrop = document.getElementById('backdrop');
+  function plural(n) { var r = n % 10, rr = n % 100; return (r === 1 && rr !== 11) ? 'носитель' : (r >= 2 && r <= 4 && (rr < 12 || rr > 14)) ? 'носителя' : 'носителей'; }
+  function openSheet() {
+    var on = MEDIA.filter(function (m) { return S.m[m.id].on; });
+    document.getElementById('sheet-opts').innerHTML = Object.keys(GROUPS).map(function (g) {
+      var n = on.filter(function (m) { return m.g === g; }).length;
+      return '<button type="button" class="opt" data-g="' + g + '"' + (n ? '' : ' disabled') + '><span>' + esc(GROUPS[g].title) + '</span><span class="n">' + (n ? n + ' ' + plural(n) : 'ничего не отмечено') + '</span></button>';
+    }).join('') + '<p class="hint" style="padding:6px 4px 0">' + (on.length ? 'Одно сообщение на подрядчика: в него попадут все отмеченные носители этой группы. Не забудьте приложить картинки.' : 'Сначала отметьте носители переключателем «Нужно».') + '</p>';
+    sheet.hidden = false; backdrop.hidden = false;
+  }
+  function closeSheet() { sheet.hidden = true; backdrop.hidden = true; }
+  document.getElementById('copy-btn').addEventListener('click', openSheet);
+  document.getElementById('sheet-close').addEventListener('click', closeSheet);
+  backdrop.addEventListener('click', closeSheet);
+  sheet.addEventListener('click', function (e) {
+    var o = e.target.closest('.opt'); if (!o || o.disabled) return;
+    copyText(requestText(MEDIA.filter(function (m) { return m.g === o.dataset.g && S.m[m.id].on; }))); closeSheet();
+  });
+
+  // ---------- буфер и тост ----------
+  var toastEl = document.getElementById('toast'), toastT;
+  function toast(msg) { toastEl.textContent = msg; toastEl.hidden = false; clearTimeout(toastT); toastT = setTimeout(function () { toastEl.hidden = true; }, 2400); }
+  function copyText(text) {
+    var ok = function () { toast('Скопировано — вставьте в чат с подрядчиком'); };
+    var fb = function () { var ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); ok(); } catch (e) { toast('Не удалось скопировать'); } document.body.removeChild(ta); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, fb); else fb();
+  }
+
+  // ---------- сводка для Никиты ----------
+  function val(v) { if (Array.isArray(v)) return v.map(fname).join(', '); if (v === true) return 'да'; return v; }
+  function summary() {
+    var out = ['ОСНОВА · ' + fmtR(foundHours()) + ' ч'];
+    FOUNDATION.forEach(function (f) {
+      out.push(f.name + ': ' + fmtR(foundOf(f)) + ' ч' + (f.toggle ? (S.f[f.id].on ? ' · нужно' : ' · не нужно') : ''));
+      (f.q || []).forEach(function (q) { var v = val(S.f[f.id].a[q.id]); if (v) out.push('  ' + q.label + ': ' + v); });
+    });
+    out.push('', 'ОБЩИЕ ДАННЫЕ');
+    GENERAL.forEach(function (f) { var v = val(S.g[f.id]); if (v) out.push(f.label + ': ' + v); });
+    MEDIA.forEach(function (m) {
+      var st = S.m[m.id]; if (!st.on) return;
+      out.push('', m.name.toUpperCase() + ' · ' + fmtR(hoursOf(m)) + ' ч' + (st.urgent ? ' · В ПЕРВУЮ ОЧЕРЕДЬ' : ''));
+      m.q.concat([NOTES]).forEach(function (f) { var v = val(st.a[f.id]); if (v) out.push(f.label + ': ' + v); });
+      if (st.req) out.push('Требования подрядчика: ' + st.req);
+      if ((st.reqFiles || []).length) out.push('Файлы требований: ' + st.reqFiles.map(fname).join(', '));
+    });
+    out.push('', 'ИТОГО ≈ ' + fmtR(totalHours()) + ' ч');
+    return out.join('\n');
+  }
+  document.getElementById('admin-copy').addEventListener('click', function () { copyText(summary()); });
+
+  // ---------- файлы для Никиты ----------
+  function allFiles() {
+    var out = [];
+    MEDIA.forEach(function (m) {
+      var st = S.m[m.id];
+      Object.keys(st.a).concat(['reqFiles']).forEach(function (k) {
+        var v = k === 'reqFiles' ? st.reqFiles : st.a[k];
+        if (Array.isArray(v)) v.forEach(function (x) { if (x && x.id) out.push({ id: x.id, name: x.name, where: m.name }); });
+      });
+    });
+    return out;
+  }
+  function openFile(id, win) {
+    rpc('brief_file_get', { p_pass: PASSWORD, p_id: id }).then(function (f) {
+      var bin = atob(f.b64), u8 = new Uint8Array(bin.length);
+      for (var i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+      var url = URL.createObjectURL(new Blob([u8], { type: f.mime }));
+      if (win) win.location = url; else location.href = url;
+    }, function () { if (win) win.close(); toast('Не удалось открыть файл'); });
+  }
+
+  // ---------- вход ----------
+  function enter() {
+    document.getElementById('gate').hidden = true; app.hidden = false; document.getElementById('bottom').hidden = false;
+    document.getElementById('local-note').hidden = REMOTE;
+    render();
+    if (Object.keys(pending).length) touched(); else setStatus('', 'Сохраняется автоматически');
+    if (location.hash === '#admin') {
+      document.getElementById('admin').hidden = false;
+      document.getElementById('admin-text').textContent = summary();
+      var fl = allFiles();
+      document.getElementById('admin-files').innerHTML = fl.length ? fl.map(function (f) { return '<button type="button" class="btn ghost" data-open="' + esc(f.id) + '">' + esc(f.where + ': ' + f.name) + '</button>'; }).join('') : '<span class="hint">Файлов пока нет</span>';
+    }
+  }
+  document.getElementById('admin-files').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-open]'); if (!b) return;
+    openFile(b.dataset.open, window.open('', '_blank'));
+  });
+
+  var gateBtn = document.getElementById('gate-btn'), gateErr = document.getElementById('pw-err');
+  function login(pass) {
+    if (!REMOTE) return pass.toLowerCase() === DEMO_PASS ? Promise.resolve(null) : Promise.reject({ bad: true });
+    return rpc('brief_load', { p_pass: pass });
+  }
+  function tryLogin(pass, silent) {
+    gateBtn.disabled = true; gateBtn.textContent = 'Проверяю…'; gateErr.hidden = true;
+    login(pass).then(function (data) {
+      PASSWORD = pass; writeLS(LS_PASS, pass);
+      if (REMOTE) { blank(); mergeIn(data); Object.keys(pending).forEach(function (k) { setIn(k, pending[k]); }); persist(); }
+      enter();
+      if (REMOTE && Object.keys(pending).length) saveNow();
+    }, function (err) {
+      gateBtn.disabled = false; gateBtn.textContent = 'Войти';
+      if (err.bad) {
+        try { localStorage.removeItem(LS_PASS); } catch (e) {}
+        document.getElementById('gate').hidden = false;
+        if (!silent) { gateErr.textContent = 'Неверный пароль'; gateErr.hidden = false; }
+        return;
+      }
+      if (silent) { PASSWORD = pass; enter(); setStatus('err', 'Нет связи — показаны сохранённые ответы'); return; }
+      gateErr.textContent = 'Нет связи с сервером. Проверьте интернет и попробуйте ещё раз.'; gateErr.hidden = false;
+    });
+  }
+  document.getElementById('gate-form').addEventListener('submit', function (e) {
+    e.preventDefault(); tryLogin(document.getElementById('pw').value.trim(), false);
+  });
+  var saved = readLS(LS_PASS);
+  if (saved) { document.getElementById('gate').hidden = true; tryLogin(saved, true); }
+  else document.getElementById('pw').focus();
+})();
+</script>
+</body>
+</html>
