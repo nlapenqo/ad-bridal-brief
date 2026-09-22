@@ -37,7 +37,7 @@ end $$;
 
 -- jsonb_set, который создаёт недостающие вложенные объекты
 create or replace function public._brief_jset(target jsonb, path text[], val jsonb) returns jsonb
-language plpgsql immutable as $$
+language plpgsql immutable set search_path = public as $$
 declare i int;
 begin
   for i in 1 .. coalesce(array_length(path, 1), 0) - 1 loop
@@ -91,12 +91,12 @@ begin
   return (select jsonb_build_object('name', name, 'mime', mime, 'b64', replace(encode(data, 'base64'), E'\n', '')) from brief_file where id = p_id);
 end $$;
 
-revoke all on function public._brief_check(text) from public;
-revoke all on function public._brief_jset(jsonb, text[], jsonb) from public;
-revoke all on function public.brief_load(text) from public;
-revoke all on function public.brief_save(text, jsonb) from public;
-revoke all on function public.brief_file_put(text, text, text, text) from public;
-revoke all on function public.brief_file_get(text, uuid) from public;
+revoke all on function public._brief_check(text) from public, anon, authenticated;
+revoke all on function public._brief_jset(jsonb, text[], jsonb) from public, anon, authenticated;
+revoke all on function public.brief_load(text) from public, anon, authenticated;
+revoke all on function public.brief_save(text, jsonb) from public, anon, authenticated;
+revoke all on function public.brief_file_put(text, text, text, text) from public, anon, authenticated;
+revoke all on function public.brief_file_get(text, uuid) from public, anon, authenticated;
 grant execute on function public.brief_load(text) to anon;
 grant execute on function public.brief_save(text, jsonb) to anon;
 grant execute on function public.brief_file_put(text, text, text, text) to anon;
