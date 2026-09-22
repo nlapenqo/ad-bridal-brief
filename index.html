@@ -171,7 +171,8 @@
   .bottom .st.err { color: var(--crit); }
   .bottom .st.err::before { background: var(--crit); }
   .bottom .tot { font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .bottom .btn { min-height: 48px; font-size: 15px; padding: 10px 14px; white-space: nowrap; }
+  .bottom .btn { min-height: 48px; font-size: 15px; padding: 10px 12px; white-space: nowrap; }
+  @media (max-width: 599px) { .bottom .in { gap: 10px 8px; } }
   #save-btn { flex: 0 0 auto; }
   #copy-btn { flex: 1 1 auto; }
   @media (min-width: 600px) { .bottom .meta { flex: 1 1 auto; justify-content: flex-start; gap: 20px; } #copy-btn { flex: 0 0 auto; } .bottom .btn { padding: 12px 20px; } }
