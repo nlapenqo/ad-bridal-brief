@@ -188,6 +188,8 @@
 
   .toast { position: fixed; left: 50%; bottom: calc(110px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 40; background: var(--ink); color: #fff; padding: 12px 18px; border-radius: 999px; font-size: 15px; font-weight: 500; box-shadow: 0 8px 24px rgba(22,61,86,.25); white-space: nowrap; }
 
+  .afile { display: flex; flex-direction: column; gap: 8px; flex: 1 1 100%; }
+  .afile img { border-radius: 14px; max-height: 360px; object-fit: contain; background: var(--ground); }
   .admin pre { white-space: pre-wrap; font: 14px/1.5 var(--body); background: var(--ground); border-radius: 14px; padding: 16px; margin: 0; }
 
   @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
@@ -823,13 +825,18 @@
     });
     return out;
   }
-  function openFile(id, win) {
-    rpc('brief_file_get', { p_pass: PASSWORD, p_id: id }).then(function (f) {
+  // файл подгружается по нажатию и показывается на месте: картинка — превью, остальное — ссылка «Скачать»
+  function openFile(btn) {
+    btn.disabled = true; btn.textContent = 'Загружаю…';
+    rpc('brief_file_get', { p_pass: PASSWORD, p_id: btn.dataset.open }).then(function (f) {
       var bin = atob(f.b64), u8 = new Uint8Array(bin.length);
       for (var i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
       var url = URL.createObjectURL(new Blob([u8], { type: f.mime }));
-      if (win) win.location = url; else location.href = url;
-    }, function () { if (win) win.close(); toast('Не удалось открыть файл'); });
+      var box = document.createElement('div'); box.className = 'afile';
+      box.innerHTML = (/^image\//.test(f.mime) ? '<img src="' + url + '" alt="">' : '') +
+        '<a class="btn ghost" href="' + url + '" download="' + esc(f.name) + '" target="_blank" rel="noopener">Скачать ' + esc(btn.dataset.label) + '</a>';
+      btn.replaceWith(box);
+    }, function () { btn.disabled = false; btn.textContent = btn.dataset.label; toast('Не удалось загрузить файл'); });
   }
 
   // ---------- вход ----------
@@ -842,12 +849,12 @@
       document.getElementById('admin').hidden = false;
       document.getElementById('admin-text').textContent = summary();
       var fl = allFiles();
-      document.getElementById('admin-files').innerHTML = fl.length ? fl.map(function (f) { return '<button type="button" class="btn ghost" data-open="' + esc(f.id) + '">' + esc(f.where + ': ' + f.name) + '</button>'; }).join('') : '<span class="hint">Файлов пока нет</span>';
+      document.getElementById('admin-files').innerHTML = fl.length ? fl.map(function (f) { return '<button type="button" class="btn ghost" data-open="' + esc(f.id) + '" data-label="' + esc(f.where + ': ' + f.name) + '">' + esc(f.where + ': ' + f.name) + '</button>'; }).join('') : '<span class="hint">Файлов пока нет</span>';
     }
   }
   document.getElementById('admin-files').addEventListener('click', function (e) {
     var b = e.target.closest('[data-open]'); if (!b) return;
-    openFile(b.dataset.open, window.open('', '_blank'));
+    openFile(b);
   });
 
   var gateBtn = document.getElementById('gate-btn'), gateErr = document.getElementById('pw-err');
