@@ -120,7 +120,7 @@
   .fields { display: flex; flex-direction: column; gap: 14px; }
   .f { display: flex; flex-direction: column; gap: 6px; }
   .fl { font-size: 15px; font-weight: 500; color: var(--text); }
-  .f input[type="text"], .f textarea { width: 100%; padding: 13px 14px; border: 1.5px solid var(--line-strong); border-radius: var(--r-ctl); background: var(--surface); font-size: 16px; line-height: 1.4; }
+  .f input[type="text"], .f input[type="password"], .f textarea { width: 100%; padding: 13px 14px; border: 1.5px solid var(--line-strong); border-radius: var(--r-ctl); background: var(--surface); font-size: 16px; line-height: 1.4; }
   .f textarea { min-height: 96px; resize: vertical; }
   .f input:focus, .f textarea:focus { border-color: var(--ink); outline: none; }
   .f input::placeholder, .f textarea::placeholder { color: #9AA6AE; }
@@ -171,8 +171,10 @@
   .bottom .st.err { color: var(--crit); }
   .bottom .st.err::before { background: var(--crit); }
   .bottom .tot { font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .bottom .btn { flex: 1 1 auto; min-height: 48px; font-size: 15px; }
-  @media (min-width: 600px) { .bottom .meta { flex: 1 1 auto; justify-content: flex-start; gap: 20px; } .bottom .btn { flex: 0 0 auto; } }
+  .bottom .btn { min-height: 48px; font-size: 15px; padding: 10px 14px; white-space: nowrap; }
+  #save-btn { flex: 0 0 auto; }
+  #copy-btn { flex: 1 1 auto; }
+  @media (min-width: 600px) { .bottom .meta { flex: 1 1 auto; justify-content: flex-start; gap: 20px; } #copy-btn { flex: 0 0 auto; } .bottom .btn { padding: 12px 20px; } }
 
   /* Шторка */
   .backdrop { position: fixed; inset: 0; z-index: 30; background: rgba(22,61,86,.35); }
