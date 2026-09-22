@@ -163,19 +163,21 @@
 
   /* Нижняя панель */
   .bottom { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: rgba(255,255,255,.96); backdrop-filter: blur(8px); border-top: 1px solid var(--line); padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px)); }
-  .bottom .in { max-width: 720px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
-  .bottom .meta { flex: 1 1 100%; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-  .bottom .st { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
-  .bottom .st::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--mint-deep); }
+  /* Сетка, а не flex-wrap: ширина текста статуса меняется, и кнопки не должны прыгать */
+  .bottom .in { max-width: 720px; margin: 0 auto; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 10px 8px; }
+  .bottom .meta { grid-column: 1 / -1; min-width: 0; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .bottom .st { min-width: 0; font-size: 13px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .bottom .st::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 8px; border-radius: 50%; background: var(--mint-deep); vertical-align: 1px; }
   .bottom .st.pending::before { background: var(--peach-deep); }
   .bottom .st.err { color: var(--crit); }
   .bottom .st.err::before { background: var(--crit); }
-  .bottom .tot { font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .bottom .tot { flex: none; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
   .bottom .btn { min-height: 48px; font-size: 15px; padding: 10px 12px; white-space: nowrap; }
-  @media (max-width: 599px) { .bottom .in { gap: 10px 8px; } }
-  #save-btn { flex: 0 0 auto; }
-  #copy-btn { flex: 1 1 auto; }
-  @media (min-width: 600px) { .bottom .meta { flex: 1 1 auto; justify-content: flex-start; gap: 20px; } #copy-btn { flex: 0 0 auto; } .bottom .btn { padding: 12px 20px; } }
+  @media (min-width: 600px) {
+    .bottom .in { grid-template-columns: minmax(0, 1fr) auto auto; gap: 14px; }
+    .bottom .meta { grid-column: auto; justify-content: flex-start; gap: 20px; }
+    .bottom .btn { padding: 12px 20px; }
+  }
 
   /* Шторка */
   .backdrop { position: fixed; inset: 0; z-index: 30; background: rgba(22,61,86,.35); }
