@@ -213,6 +213,13 @@
   </form>
 </div>
 
+<div class="gate" id="loading" hidden>
+  <div class="gate-card">
+    <div class="brand">AD Bridal</div>
+    <p class="hint">Загружаю ваши ответы…</p>
+  </div>
+</div>
+
 <!-- АНКЕТА -->
 <main class="wrap" id="app" hidden>
   <p class="local-note" id="local-note" hidden>Тестовый режим: база ещё не подключена, ответы сохраняются только в этом браузере.</p>
@@ -843,7 +850,7 @@
 
   // ---------- вход ----------
   function enter() {
-    document.getElementById('gate').hidden = true; app.hidden = false; document.getElementById('bottom').hidden = false;
+    document.getElementById('gate').hidden = true; document.getElementById('loading').hidden = true; app.hidden = false; document.getElementById('bottom').hidden = false;
     document.getElementById('local-note').hidden = REMOTE;
     render();
     if (Object.keys(pending).length) touched(); else setStatus('', 'Сохраняется автоматически');
@@ -859,6 +866,21 @@
     openFile(b);
   });
 
+  // кто-то мог заполнять с другого телефона: при возвращении на страницу подтягиваем свежие ответы
+  function refreshFromServer() {
+    if (!REMOTE || !PASSWORD || inflight || Object.keys(pending).length) return;
+    var ae = document.activeElement;
+    if (ae && /^(INPUT|TEXTAREA)$/.test(ae.tagName)) return;
+    rpc('brief_load', { p_pass: PASSWORD }).then(function (data) {
+      var before = JSON.stringify(S);
+      blank(); mergeIn(data);
+      if (JSON.stringify(S) === before) return;
+      persist(); render(); toast('Появились ответы с другого устройства');
+    }, function () {});
+  }
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) refreshFromServer(); });
+  window.addEventListener('focus', refreshFromServer);
+
   var gateBtn = document.getElementById('gate-btn'), gateErr = document.getElementById('pw-err');
   function login(pass) {
     if (!REMOTE) return pass.toLowerCase() === DEMO_PASS ? Promise.resolve(null) : Promise.reject({ bad: true });
@@ -873,6 +895,7 @@
       if (REMOTE && Object.keys(pending).length) saveNow();
     }, function (err) {
       gateBtn.disabled = false; gateBtn.textContent = 'Войти';
+      document.getElementById('loading').hidden = true;
       if (err.bad) {
         try { localStorage.removeItem(LS_PASS); } catch (e) {}
         document.getElementById('gate').hidden = false;
@@ -887,7 +910,7 @@
     e.preventDefault(); tryLogin(document.getElementById('pw').value.trim(), false);
   });
   var saved = readLS(LS_PASS);
-  if (saved) { document.getElementById('gate').hidden = true; tryLogin(saved, true); }
+  if (saved) { document.getElementById('gate').hidden = true; document.getElementById('loading').hidden = false; tryLogin(saved, true); }
   else document.getElementById('pw').focus();
 })();
 </script>
