@@ -269,14 +269,6 @@
     <div class="fields" id="site-fields"></div>
   </section>
 
-  <section class="card" id="extra">
-    <div>
-      <h2>Что ещё может пригодиться</h2>
-      <p class="hint" style="margin-top:6px">Этого нет в брендбуке, но полезно салону. Отметьте, что интересно — оценю отдельно.</p>
-    </div>
-    <div class="fields" id="extra-fields"></div>
-  </section>
-
   <section class="card" id="how">
     <h2>Как считаются часы</h2>
     <ul class="how">
@@ -366,11 +358,6 @@
     { id: 'siteDev', type: 'text', label: 'Есть ли разработчик или платформа', ph: 'например, Tilda — или «нет»' },
     { id: 'siteNotes', type: 'textarea', label: 'Заметки', ph: 'что должно быть на сайте, примеры, которые нравятся' }
   ];
-  var EXTRA = [
-    { id: 'extra', type: 'multi', label: 'Что интересно', options: ['Подарочный сертификат', 'Карточка записи на примерку', 'Бейджи для консультантов', 'Наклейки на стекло входа и витрин', 'Оформление соцсетей', 'Карточка в Яндекс Картах и 2ГИС', 'Фотозона с логотипом'] },
-    { id: 'extraOther', type: 'textarea', label: 'Другое', ph: 'что ещё понадобится салону' }
-  ];
-
   var NOTES = { id: 'notes', type: 'textarea', label: 'Заметки', ph: 'всё, что важно знать по этому носителю' };
   var FULL_FACADE = 'Фасад целиком: вход, витрины, подсветка';
   var CNT = ['1–3', '4–6', 'Больше 6'];
@@ -645,7 +632,6 @@
       '<div class="fsum"><span>Основа, всего</span><span class="n" id="fsum-n">' + hrs(foundHours()) + '</span></div>';
     document.getElementById('general-fields').innerHTML = GENERAL.map(function (f) { return fieldHTML('g', f); }).join('');
     document.getElementById('site-fields').innerHTML = SITE.map(function (f) { return fieldHTML('g', f); }).join('');
-    document.getElementById('extra-fields').innerHTML = EXTRA.map(function (f) { return fieldHTML('g', f); }).join('');
     document.getElementById('groups').innerHTML = Object.keys(GROUPS).map(function (g) {
       var items = MEDIA.filter(function (m) { return m.g === g; });
       if (!items.length) return '';
@@ -852,9 +838,7 @@
     });
     var sl = SITE.map(function (f) { var v = val(S.g[f.id]); return v ? f.label + ': ' + v : ''; }).filter(Boolean);
     if (sl.length) out.push('', 'САЙТ · оценка отдельно'); out.push.apply(out, sl);
-    var xl = EXTRA.map(function (f) { var v = val(S.g[f.id]); return v ? f.label + ': ' + v : ''; }).filter(Boolean);
-    if (xl.length) out.push('', 'ЕЩЁ ИНТЕРЕСНО · оценка отдельно'); out.push.apply(out, xl);
-    out.push('', 'ИТОГО ≈ ' + fmtR(totalHours()) + ' ч (без сайта и дополнительного)');
+    out.push('', 'ИТОГО ≈ ' + fmtR(totalHours()) + ' ч (без сайта)');
     return out.join('\n');
   }
   document.getElementById('admin-copy').addEventListener('click', function () { copyText(summary()); });
