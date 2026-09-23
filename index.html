@@ -202,7 +202,7 @@
 <div class="gate" id="gate">
   <form class="gate-card" id="gate-form">
     <div class="brand">AD Bridal</div>
-    <h1>Материалы к&nbsp;открытию</h1>
+    <h1>Материалы для&nbsp;салона</h1>
     <p class="hint">Отметить нужные носители и ответить на вопросы по каждому.</p>
     <div class="f">
       <label class="fl" for="pw">Пароль</label>
@@ -226,7 +226,7 @@
 
   <header class="hero">
     <div class="brand">AD Bridal · Краснодар</div>
-    <h1>Материалы к&nbsp;открытию</h1>
+    <h1>Материалы для&nbsp;салона</h1>
     <p>Отметьте носители, которые нужны, и ответьте на вопросы под каждым. Всё сохраняется само: можно заполнять частями, возвращаться и дозаполнять. Ответы подрядчиков можно внести позже или прислать в Telegram.</p>
     <div class="progress">
       <div class="bar"><i id="pbar"></i></div>
@@ -234,10 +234,19 @@
     </div>
   </header>
 
+  <section class="card admin" id="admin" hidden>
+    <h2>Сводка ответов</h2>
+    <p class="hint">Режим для Никиты. Всё, что заполнено, одним текстом.</p>
+    <pre id="admin-text"></pre>
+    <button class="btn ghost big" type="button" id="admin-copy">Скопировать сводку</button>
+    <span class="eyebrow">Файлы</span>
+    <div class="btns" id="admin-files"></div>
+  </section>
+
   <section class="card" id="foundation">
     <div>
       <h2>Сначала — основа</h2>
-      <p class="hint" style="margin-top:6px">Брендбук делался на английском. Это не замена шрифта: большинство надписей нужно переосмыслить по-русски и отрисовать заново. Эти правки делаются первыми, потом их элементы — шрифты, слова, слоганы — переносятся на все носители.</p>
+      <p class="hint" style="margin-top:6px">Брендбук делался на английском. Это не просто замена шрифта: большинство надписей нужно переосмыслить по-русски и подобрать для них каллиграфию с русскими буквами. Эти правки делаются первыми, потом их элементы — шрифты, слова, слоганы — переносятся на все носители.</p>
     </div>
     <div class="found" id="found"></div>
   </section>
@@ -250,21 +259,28 @@
     <div class="fields" id="general-fields"></div>
   </section>
 
-  <section class="card admin" id="admin" hidden>
-    <h2>Сводка ответов</h2>
-    <p class="hint">Режим для Никиты. Всё, что заполнено, одним текстом.</p>
-    <pre id="admin-text"></pre>
-    <button class="btn ghost big" type="button" id="admin-copy">Скопировать сводку</button>
-    <span class="eyebrow">Файлы</span>
-    <div class="btns" id="admin-files"></div>
+  <div id="groups" style="display:flex;flex-direction:column;gap:28px"></div>
+
+  <section class="card" id="site">
+    <div>
+      <h2>Сайт</h2>
+      <p class="hint" style="margin-top:6px">В брендбуке сайта не было — это отдельная работа, оценю её отдельно. Рекомендации — шрифты, графика, подача фото и референсы для вашего разработчика, без дизайна и вёрстки. Под ключ — дизайн и разработка, включая связку с вашей CRM.</p>
+    </div>
+    <div class="fields" id="site-fields"></div>
   </section>
 
-  <div id="groups" style="display:flex;flex-direction:column;gap:28px"></div>
+  <section class="card" id="extra">
+    <div>
+      <h2>Что ещё может пригодиться</h2>
+      <p class="hint" style="margin-top:6px">Этого нет в брендбуке, но полезно салону. Отметьте, что интересно — оценю отдельно.</p>
+    </div>
+    <div class="fields" id="extra-fields"></div>
+  </section>
 
   <section class="card" id="how">
     <h2>Как считаются часы</h2>
     <ul class="how">
-      <li><b>Бесплатно</b> — подготовка файлов к производству по требованиям подрядчика, для всех носителей. Поэтому там, где на макете только логотип и переделывать нечего (коробки, тишью, этикетка, сувениры), стоит 0 часов.</li>
+      <li><b>Бесплатно</b> — подготовка файлов к производству по требованиям подрядчика, для всех носителей. Поэтому там, где переделывать нечего (бланк, конверт, коробки, тишью, пыльники, этикетка, сувениры), стоит 0 часов. Если английскую надпись оставляете как есть — тоже 0.</li>
       <li><b>За что часы</b> — за дизайн. Брендбук делался на английском: надписи не переводятся дословно, а для крупных слов нет шрифтов с русскими буквами. Русский текст длиннее — композиция каждого макета пересобирается под него и под ваши реальные данные.</li>
       <li><b>Откуда цифры</b> — базово час на носитель: перенос на русский и перевёрстка. Больше там, где больше объектов (навигация — по количеству табличек, каталог — по страницам) или это новая работа (табличка режима работы, фасад целиком).</li>
       <li><b>Итог</b> считается внизу автоматически по отмеченным носителям. Перед каждым этапом я подтверждаю часы по нему.</li>
@@ -321,7 +337,7 @@
       desc: 'Два шрифта брендбука без русских букв: каллиграфический Nautica и заглавные Rocksane. Подбираю замены с кириллицей для текстов и проверяю на носителях.' },
     { id: 'words', name: 'Слова и слоганы на русском',
       hours: function (F) { var w = F.words.a.who; return w === WORDS_ME ? 5 : w === WORDS_OWN ? 3 : w === WORDS_EN ? 0 : [0, 5]; },
-      desc: 'Английские фразы с бирок, пакетов, визитки и постера («Made of forever», «Where love stays», «Dresses whisper stories…») дословно по-русски не звучат. Придумываем русские формулировки с тем же настроением и рисуем их в каллиграфии бренда: у неё нет русских букв, поэтому надписи создаются заново. Можно оставить всё на английском — тогда этот этап не нужен.',
+      desc: 'Английские фразы с бирок, пакетов, визитки и постера («Made of forever», «Where love stays», «Dresses whisper stories…») дословно по-русски не звучат. Придумываем русские формулировки с тем же настроением и подбираем для них каллиграфию с русскими буквами: в шрифте брендбука их нет. Можно оставить всё на английском — тогда этот этап не нужен, а бирки и стикеры остаются как есть.',
       q: [
         { id: 'who', type: 'choice', label: 'Русские формулировки', options: [WORDS_ME, WORDS_OWN, WORDS_EN] },
         { id: 'own', type: 'textarea', label: 'Свои варианты', ph: 'если формулировки уже есть' }
@@ -340,7 +356,19 @@
     { id: 'hours', type: 'text', label: 'Режим работы', ph: 'пн–вс 10:00–20:00, по записи' },
     { id: 'legal', type: 'textarea', label: 'Юрданные для таблички и бланка', ph: 'ИП или ООО, полное наименование, ОГРН, ИНН' },
     { id: 'dresses', type: 'choice', label: 'Какие платья в салоне', options: ['Свой бренд', 'Другие бренды', 'И те и другие'] },
-    { id: 'rent', type: 'check', label: 'Есть прокат платьев' }
+    { id: 'rent', type: 'check', label: 'Есть прокат платьев' },
+    { id: 'photos', type: 'file', label: 'Фото салона: фасад, интерьер, всё, что уже есть', accept: 'image/*,.pdf', multiple: true },
+    { id: 'photosTg', type: 'check', label: 'Пришлю фото в Telegram' }
+  ];
+  var SITE = [
+    { id: 'siteNeed', type: 'choice', label: 'Что нужно', options: ['Пока не нужен', 'Рекомендации для вашего разработчика', 'Сайт под ключ'] },
+    { id: 'siteType', type: 'multi', label: 'Какой сайт', options: ['Лендинг', 'Каталог платьев', 'Интернет-магазин', 'Онлайн-запись'] },
+    { id: 'siteDev', type: 'text', label: 'Есть ли разработчик или платформа', ph: 'например, Tilda — или «нет»' },
+    { id: 'siteNotes', type: 'textarea', label: 'Заметки', ph: 'что должно быть на сайте, примеры, которые нравятся' }
+  ];
+  var EXTRA = [
+    { id: 'extra', type: 'multi', label: 'Что интересно', options: ['Подарочный сертификат', 'Карточка записи на примерку', 'Бейджи для консультантов', 'Наклейки на стекло входа и витрин', 'Оформление соцсетей', 'Карточка в Яндекс Картах и 2ГИС', 'Фотозона с логотипом'] },
+    { id: 'extraOther', type: 'textarea', label: 'Другое', ph: 'что ещё понадобится салону' }
   ];
 
   var NOTES = { id: 'notes', type: 'textarea', label: 'Заметки', ph: 'всё, что важно знать по этому носителю' };
@@ -349,6 +377,8 @@
   function byCount(v) { return v === CNT[0] ? 1 : v === CNT[1] ? 2 : v === CNT[2] ? 3 : [1, 3]; }
   var TR = ['Оставить', 'Заменить на одну из переведённых', 'Заменить на свою', 'Убрать'];
   var TR2 = ['Оставить', 'Заменить на переведённые', 'Заменить на свои'];
+  // бирки и стикеры зависят от решения по слоганам в основе
+  function byWords(a, F) { var w = F.words.a.who; return w === WORDS_EN ? 0 : w ? 1 : [0, 1]; }
 
   // hours: число или функция от ответов; feature — что в макете нетипичного, уходит в сообщение подрядчику
   var MEDIA = [
@@ -416,8 +446,8 @@
         { id: 'hanger', type: 'choice', label: 'Слоган на бирке для вешалки', options: TR },
         { id: 'hangerOwn', type: 'textarea', label: 'Своя надпись', ph: 'если выбрали свой вариант' }
       ] },
-    { id: 'badges', g: 'print', name: 'Бирки со слоганами', img: 'img/badges.jpg', file: 'AD-Bridal-birki.jpg', hours: 1,
-      change: 'Слоганы на бирках — на русском, из переведённых в основе. Форма и три цвета сохраняются.',
+    { id: 'badges', g: 'print', name: 'Бирки со слоганами', img: 'img/badges.jpg', file: 'AD-Bridal-birki.jpg', hours: byWords,
+      change: 'Слоганы на бирках — русские, из «Слов и слоганов» в основе. Форма и три цвета сохраняются. Если слоганы остаются на английском — переделывать нечего.',
       feature: 'фигурная вырубка по волнистому контуру, отверстие под ленту, печать по цветной бумаге',
       q: [
         { id: 'where', type: 'textarea', label: 'Где будут бирки', ph: 'на пакетах, коробках, пыльниках, подарках…' },
@@ -465,16 +495,17 @@
       change: 'Дизайн готов: монограмма тиснением на клапане, надписей нет. Переделывать нечего — готовлю файл под требования типографии.',
       feature: 'конверт с фигурным клапаном и тиснением монограммы',
       q: [] },
-    { id: 'stickers', g: 'print', name: 'Стикеры', img: 'img/stickers.jpg', file: 'AD-Bridal-stikery.jpg', hours: 1,
-      change: 'Надписи на русском, набор сохраняем: слоганы, монограмма, лебедь, сердца.',
+    { id: 'stickers', g: 'print', name: 'Стикеры', img: 'img/stickers.jpg', file: 'AD-Bridal-stikery.jpg', hours: byWords,
+      change: 'Надписи на русском, набор сохраняем: слоганы, монограмма, лебедь, сердца. Если слоганы остаются на английском — переделывать нечего.',
       feature: 'объёмные наклейки фигурной резки с эпоксидной заливкой',
       q: [
         { id: 'purpose', type: 'textarea', label: 'Для чего стикеры', ph: 'запечатывать упаковку, подарок невесте, для соцсетей' }
       ] },
 
     // ---- упаковка
-    { id: 'bags', g: 'pack', name: 'Пакеты', img: 'img/bags.jpg', file: 'AD-Bridal-pakety.jpg', hours: 1,
-      change: 'Заменяем надпись «Made of forever» на русскую, размеры под ваш ассортимент.',
+    { id: 'bags', g: 'pack', name: 'Пакеты', img: 'img/bags.jpg', file: 'AD-Bridal-pakety.jpg',
+      hours: function (a) { return a.text === 'Оставить' ? 0 : a.text ? 1 : [0, 1]; },
+      change: 'Заменяем надпись «Made of forever» на русскую, размеры под ваш ассортимент. Если надпись оставляете — переделывать нечего.',
       feature: 'пакет из цветной бумаги с волнистым верхним краем, печать белым, ленты-ручки',
       q: [
         { id: 'what', type: 'textarea', label: 'Под что пакеты', ph: 'аксессуары, фата, обувь' },
@@ -555,7 +586,7 @@
   function fmtN(n) { return String(Math.round(n * 10) / 10).replace('.', ','); }
   function fmtR(r) { return r[0] === r[1] ? fmtN(r[0]) : fmtN(r[0]) + '–' + fmtN(r[1]); }
   function hrs(h) { return fmtR(R(h)) + ' <small>ч</small>'; }
-  function hoursOf(m) { return R(typeof m.hours === 'function' ? m.hours(S.m[m.id].a) : m.hours); }
+  function hoursOf(m) { return R(typeof m.hours === 'function' ? m.hours(S.m[m.id].a, S.f) : m.hours); }
   function foundOf(f) { return R(f.hours(S.f)); }
   function foundHours() { return FOUNDATION.reduce(function (s, f) { return addR(s, foundOf(f)); }, [0, 0]); }
   function totalHours() { return MEDIA.reduce(function (s, m) { return S.m[m.id].on ? addR(s, hoursOf(m)) : s; }, foundHours()); }
@@ -613,6 +644,8 @@
     document.getElementById('found').innerHTML = FOUNDATION.map(foundHTML).join('') +
       '<div class="fsum"><span>Основа, всего</span><span class="n" id="fsum-n">' + hrs(foundHours()) + '</span></div>';
     document.getElementById('general-fields').innerHTML = GENERAL.map(function (f) { return fieldHTML('g', f); }).join('');
+    document.getElementById('site-fields').innerHTML = SITE.map(function (f) { return fieldHTML('g', f); }).join('');
+    document.getElementById('extra-fields').innerHTML = EXTRA.map(function (f) { return fieldHTML('g', f); }).join('');
     document.getElementById('groups').innerHTML = Object.keys(GROUPS).map(function (g) {
       var items = MEDIA.filter(function (m) { return m.g === g; });
       if (!items.length) return '';
@@ -622,7 +655,7 @@
   }
 
   // ---------- прогресс и часы ----------
-  function filled(id) { var st = S.m[id]; return st.req || (st.reqFiles || []).length || Object.keys(st.a).some(function (k) { var v = st.a[k]; return Array.isArray(v) ? v.length : v; }); }
+  function filled(id) { var st = S.m[id]; if (!MEDIA.filter(function (m) { return m.id === id; })[0].q.length) return true; return st.req || (st.reqFiles || []).length || Object.keys(st.a).some(function (k) { var v = st.a[k]; return Array.isArray(v) ? v.length : v; }); }
   function updateProgress() {
     var on = MEDIA.filter(function (m) { return S.m[m.id].on; }), done = on.filter(function (m) { return filled(m.id); });
     document.getElementById('pbar').style.width = (on.length ? done.length / on.length * 100 : 0) + '%';
@@ -817,7 +850,11 @@
       if (st.req) out.push('Требования подрядчика: ' + st.req);
       if ((st.reqFiles || []).length) out.push('Файлы требований: ' + st.reqFiles.map(fname).join(', '));
     });
-    out.push('', 'ИТОГО ≈ ' + fmtR(totalHours()) + ' ч');
+    var sl = SITE.map(function (f) { var v = val(S.g[f.id]); return v ? f.label + ': ' + v : ''; }).filter(Boolean);
+    if (sl.length) out.push('', 'САЙТ · оценка отдельно'); out.push.apply(out, sl);
+    var xl = EXTRA.map(function (f) { var v = val(S.g[f.id]); return v ? f.label + ': ' + v : ''; }).filter(Boolean);
+    if (xl.length) out.push('', 'ЕЩЁ ИНТЕРЕСНО · оценка отдельно'); out.push.apply(out, xl);
+    out.push('', 'ИТОГО ≈ ' + fmtR(totalHours()) + ' ч (без сайта и дополнительного)');
     return out.join('\n');
   }
   document.getElementById('admin-copy').addEventListener('click', function () { copyText(summary()); });
@@ -825,6 +862,7 @@
   // ---------- файлы для Никиты ----------
   function allFiles() {
     var out = [];
+    GENERAL.forEach(function (f) { if (f.type === 'file') (S.g[f.id] || []).forEach(function (x) { if (x && x.id) out.push({ id: x.id, name: x.name, where: 'Фото салона' }); }); });
     MEDIA.forEach(function (m) {
       var st = S.m[m.id];
       Object.keys(st.a).concat(['reqFiles']).forEach(function (k) {
